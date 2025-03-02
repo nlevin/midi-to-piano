@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Original Tracks: ${data.stats.originalTracks}</p>
                 <p>Right Hand Notes: ${data.stats.rightHandNotes}</p>
                 <p>Left Hand Notes: ${data.stats.leftHandNotes}</p>
-                <p>Duration: ${data.stats.duration} seconds</p>
+                <p>Duration: ${Math.round(data.stats.duration)} seconds</p>
             `;
             
             downloadLink.href = data.downloadLink;
