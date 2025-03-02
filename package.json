@@ -1,0 +1,17 @@
+{
+  "name": "piano-midi-optimizer",
+  "version": "1.0.0",
+  "description": "Optimize MIDI files for piano playing",
+  "main": "web-interface.js",
+  "scripts": {
+    "start": "node web-interface.js"
+  },
+  "dependencies": {
+    "@tonejs/midi": "^2.0.28",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

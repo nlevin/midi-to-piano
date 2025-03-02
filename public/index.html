@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piano MIDI Optimizer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 2rem;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    .loading {
+      display: none;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .results {
+      display: none;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: #e8f4ff;
+      border-radius: 0.5rem;
+    }
+    .form-label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .note-display {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+    .options-section {
+      border-top: 1px solid #eee;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+    .btn-primary {
+      background-color: #0066cc;
+      border: none;
+      padding: 0.8rem;
+      font-weight: 500;
+    }
+    .btn-success {
+      background-color: #28a745;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Piano MIDI Optimizer</h1>
+      <p class="lead">Convert any MIDI file into a playable piano arrangement</p>
+    </div>
+
+    <div class="form-container">
+      <form id="optimizerForm">
+        <!-- File Upload -->
+        <div class="mb-4">
+          <label for="midiFile" class="form-label">Choose a MIDI file</label>
+          <input class="form-control" type="file" id="midiFile" name="midiFile" accept=".mid,.midi" required>
+        </div>
+
+        <!-- Main Settings -->
+        <div class="mb-4">
+          <label class="form-label">Split Point</label>
+          <input type="range" class="form-range" id="splitPoint" name="splitPoint" 
+                 min="48" max="72" value="60">
+          <div class="note-display" id="noteDisplay">Middle C (C4)</div>
+        </div>
+
+        <!-- Advanced Options -->
+        <div class="options-section">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Right Hand (max notes)</label>
+              <input type="range" class="form-range" id="maxRightHandNotes" 
+                     name="maxRightHandNotes" min="1" max="12" value="8">
+              <div class="note-display"><span id="rightHandValue">8</span> notes</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Left Hand (max notes)</label>
+              <input type="range" class="form-range" id="maxLeftHandNotes" 
+                     name="maxLeftHandNotes" min="1" max="10" value="6">
+              <div class="note-display"><span id="leftHandValue">6</span> notes</div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="dynamicSplitPoint" 
+                     name="dynamicSplitPoint" checked>
+              <label class="form-check-label" for="dynamicSplitPoint">
+                Use dynamic split point
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mt-4">
+          <button type="submit" class="btn btn-primary w-100">Optimize MIDI</button>
+        </div>
+      </form>
+
+      <!-- Loading State -->
+      <div class="loading">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2">Optimizing your MIDI file...</p>
+      </div>
+
+      <!-- Results -->
+      <div class="results">
+        <h4 class="mb-3">Optimization Complete!</h4>
+        <div class="stats mb-3"></div>
+        <a href="#" class="btn btn-success w-100 download-link">Download Piano Version</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/optimizer.js"></script>
+</body>
+</html>
