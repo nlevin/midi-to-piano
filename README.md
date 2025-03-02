@@ -1,6 +1,6 @@
 # Piano MIDI Optimizer
 
-Convert any MIDI file into a playable piano arrangement with separate right and left hand parts.
+Convert any MIDI file into a playable piano arrangement with separate right and left hand parts. I recommend using this to make midis to then practice with the [Just Play Piano](https://apps.apple.com/us/app/piano-just-play-music/id6477355606) app for Apple Vision Pro.
 
 ## Features
 - Intelligent distribution of notes between hands
